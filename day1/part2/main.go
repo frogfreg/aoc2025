@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	data, err := os.ReadFile("./input.txt")
+	data, err := os.ReadFile("../input.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -27,13 +27,17 @@ func main() {
 			panic(err)
 		}
 
+		multiplier := 1
 		if l[0] == 'L' {
-			count *= -1
+			multiplier = -1
 		}
 
-		currPos = (count + currPos) % 100
-		if currPos == 0 {
-			zeroCount++
+		for count > 0 {
+			currPos = ((currPos + (multiplier * 1)) % 100)
+			if currPos == 0 {
+				zeroCount++
+			}
+			count--
 		}
 
 	}
